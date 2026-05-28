@@ -1,65 +1,487 @@
-<!-- Hello World.. It's me :) -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alison Orellana Rios — Software Engineer & AI Speaker</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0b1a;
+    --surface: #13102b;
+    --surface2: #1a1636;
+    --accent: #b48ef7;
+    --accent2: #d4a8ff;
+    --accent3: #7c5cbf;
+    --gold: #e0b8ff;
+    --text: #ede8ff;
+    --muted: #8c82b8;
+    --border: rgba(180,142,247,0.18);
+  }
 
-	<link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/product/">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-	<title>AllyOR</title>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 10%, rgba(180,142,247,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(124,92,191,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, rgba(212,168,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,11,26,0.75);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
+
+  .hero-inner { display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center; width: 100%; }
+
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-tag::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  h1 .name-line { display: block; }
+  h1 .accent-word { color: var(--accent); font-style: italic; }
+
+  .hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #0d0b1a; font-weight: 500; }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(180,142,247,0.35); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .avatar-card { position: relative; }
+  .avatar-frame { position: relative; width: 100%; aspect-ratio: 3/4; max-height: 480px; overflow: hidden; border-radius: 4px; }
+  .avatar-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; border: 1px solid var(--border); position: relative; }
+  .avatar-initials { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: var(--accent); opacity: 0.7; }
+  .avatar-deco { position: absolute; top: -12px; right: -12px; width: 80px; height: 80px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); border-radius: 0 4px 0 0; }
+  .avatar-deco2 { position: absolute; bottom: -12px; left: -12px; width: 80px; height: 80px; border-bottom: 2px solid var(--accent3); border-left: 2px solid var(--accent3); border-radius: 0 0 0 4px; }
+
+  .stats-row { display: flex; gap: 1.5rem; margin-top: 1.5rem; }
+  .stat { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold); display: block; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  section { padding: 5rem 0; position: relative; z-index: 1; }
+
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 3rem; line-height: 1.15; }
+  h2 em { font-style: italic; color: var(--accent); }
+
+  .divider { height: 1px; background: linear-gradient(to right, var(--border), transparent); margin: 0 0 5rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.6rem; }
+  .skill-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 2px; padding: 0.5rem 0.9rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); text-align: center; transition: all 0.2s; cursor: default; }
+  .skill-pill:hover { border-color: var(--accent); color: var(--accent); background: rgba(180,142,247,0.08); transform: translateY(-2px); }
+
+  .timeline { position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
+  .timeline-item { padding-left: 2rem; margin-bottom: 2.5rem; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+  .timeline-role { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+  .timeline-company { font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--accent); margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .timeline-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .timeline-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  .yt-cta { display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 2rem; padding: 1rem 1.8rem; background: rgba(180,142,247,0.07); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; transition: all 0.25s; }
+  .yt-cta:hover { background: rgba(180,142,247,0.14); border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(180,142,247,0.18); }
+  .yt-icon { width: 24px; height: 24px; background: #ff0000; border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .yt-icon svg { width: 13px; height: 13px; fill: #fff; }
+
+  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+  .portfolio-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; text-decoration: none; color: var(--text); transition: all 0.25s; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 0.6rem; }
+  .portfolio-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent3)); }
+  .portfolio-card:hover { border-color: rgba(180,142,247,0.4); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+  .portfolio-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+  .portfolio-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
+  .portfolio-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .portfolio-link { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-top: auto; padding-top: 0.8rem; display: flex; align-items: center; gap: 0.4rem; }
+
+  .talks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .talk-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.4rem; transition: all 0.25s; position: relative; overflow: hidden; }
+  .talk-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent3); }
+  .talk-card:hover { border-color: rgba(180,142,247,0.4); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+  .talk-event { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .talk-meta { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+  .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.6rem; transition: all 0.2s; }
+  .edu-card:hover { border-color: rgba(224,184,255,0.35); box-shadow: 0 8px 30px rgba(180,142,247,0.08); }
+  .edu-degree { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--gold); }
+  .edu-school { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; }
+  .edu-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+
+  .leadership-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+  .leader-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.2s; }
+  .leader-card:hover { background: var(--surface2); transform: translateY(-2px); }
+  .leader-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .leader-title { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .leader-sub { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+
+  #contact { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+  .contact-link { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; border: 1px solid var(--border); border-radius: 2px; text-decoration: none; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.8rem; transition: all 0.2s; background: var(--bg); }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+  .contact-link .icon { font-size: 1rem; opacity: 0.7; flex-shrink: 0; }
+  .contact-link-text { display: flex; flex-direction: column; }
+  .contact-platform { font-family: 'DM Mono', monospace; font-size: 0.63rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+
+  footer { padding: 2rem; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; position: relative; z-index: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .avatar-card { display: none; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    nav .nav-links { display: none; }
+    .talks-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-	<nav class="site-header sticky-top py-1 navbar navbar-expand-lg bg-dark">
-		<div class="container d-flex flex-column flex-md-row justify-content-between">
-		    <a class="nav-link py-2 d-none d-md-inline-block text-white" href="#">Home</a>
-		    <a class="nav-link py-2 d-none d-md-inline-block text-white" href="#Projects">Projects</a>
-		    <a class="nav-link py-2 d-none d-md-inline-block text-white" href="#Contributions">Experience</a>
-		    <a class="nav-link py-2 d-none d-md-inline-block text-white" href="#">Skills</a>
-		</div>
-	</nav>
+<nav>
+  <div class="nav-logo">AOR // Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#portfolio">Design</a></li>
+    <li><a href="#talks">Talks</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-	  	<div class="col-md-6 p-lg-5 mx-auto my-5">
-	    	<h1 class="display-4 font-weight-normal">Alison Orellana Rios</h1>
-	    	<p class="lead font-weight-normal">Engineer in Computer Science - Bolivia.<br>Master in Multimedia Design and Production - Spain.</p>
-	    	<p>PyLadies Cochabamba Lead Organizer.<br>Python Bolivia Organizer.</p>
-	    	<a class="btn btn-outline-secondary" href="https://linktr.ee/AllyOR">Projects</a>
-	  	</div>
-	  	<div class="product-device shadow-sm d-none d-md-block"></div>
-	  	<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-	</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-tag">Software Engineer · AI Speaker · Educator</div>
+        <h1>
+          <span class="name-line">Alison</span>
+          <span class="name-line"><em class="accent-word">Orellana</em> Rios</span>
+        </h1>
+        <p class="hero-desc">
+          Associate Software Engineer at <strong>NICE CXone</strong>, working at the intersection of
+          <strong>Agentic AI</strong> and cloud infrastructure. International conference speaker,
+          community leader, and passionate educator across Latin America and beyond.
+        </p>
+        <div class="hero-cta">
+          <a href="#experience" class="btn btn-primary">View Experience</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-deco"></div>
+        <div class="avatar-frame">
+          <div class="avatar-placeholder">
+            <div class="avatar-initials">AOR</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);text-align:center;padding:0 2rem;">Cochabamba, Bolivia<br>Available Worldwide</div>
+          </div>
+        </div>
+        <div class="avatar-deco2"></div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Talks</span></div>
+          <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Eng.</span></div>
+          <div class="stat"><span class="stat-num">C1</span><span class="stat-label">English</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-	  	<div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-		    <div class="my-3 py-3">
-		      	<h2 class="display-5" id="Hobbies">Hobbies</h2>
-		      	<p class="lead">Discovering new music,<br>All kinds of art,<br>Martial arts in general,<br>Design and creative things,<br>Photography and natural spaces,<br>Travel and discovering about cultures.</p>
-		    </div>
-	    	<!-- <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-	  	</div>
+<div class="divider container"></div>
 
-	  	<div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-		    <div class="my-3 p-3">
-			    <h2 class="display-5" id="Contributions">Contributions</h2>
-			    <p class="lead">PyLadies Cochabamba Organizer,<br>Python Bolivia Organizer,<br>Coordinator in Python en Español,<br>Volunteer at teaching computation and programming.</p>
-			</div>
-		    <!-- <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-  		</div>
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <div class="container">
+    <div class="section-label">Technical Proficiency</div>
+    <h2>Skills &amp; <em>Tools</em></h2>
+    <div class="skills-grid">
+      <div class="skill-pill">Python</div><div class="skill-pill">C#</div><div class="skill-pill">Go</div>
+      <div class="skill-pill">Java</div><div class="skill-pill">JavaScript</div><div class="skill-pill">PHP</div>
+      <div class="skill-pill">SQL</div><div class="skill-pill">HTML/CSS</div><div class="skill-pill">ASP.NET</div>
+      <div class="skill-pill">Angular</div><div class="skill-pill">Laravel</div><div class="skill-pill">IONIC</div>
+      <div class="skill-pill">Agentic AI</div><div class="skill-pill">Machine Learning</div><div class="skill-pill">Data Science</div>
+      <div class="skill-pill">NLP</div><div class="skill-pill">AWS</div><div class="skill-pill">Docker</div>
+      <div class="skill-pill">Git</div><div class="skill-pill">CI/CD</div><div class="skill-pill">Jenkins</div>
+      <div class="skill-pill">Selenium</div><div class="skill-pill">MSSQL</div><div class="skill-pill">MySQL</div>
+      <div class="skill-pill">Jira</div><div class="skill-pill">Confluence</div><div class="skill-pill">Figma</div>
+      <div class="skill-pill">Adobe XD</div><div class="skill-pill">Adobe Illustrator</div><div class="skill-pill">DaVinci Resolve</div>
+      <div class="skill-pill">Scrum</div><div class="skill-pill">Postman</div><div class="skill-pill">Grafana</div><div class="skill-pill">Canva</div>
+    </div>
+  </div>
+</section>
 
-		<div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-			<div class="my-3 p-3">
-			    <h2 class="display-5" id="Projects">Projects</h2>
-			    <p class="lead">Online radio Dosis boliviana,<br>Meetups and workshops speaker,<br>PyCon Bolivia 2020 web page developer,<br>YOUNGA delagate of Bolivia.</p>
-			</div>
-		    	<!-- <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div> -->
-		</div>
+<div class="divider container"></div>
 
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-in">
+  <div class="container">
+    <div class="section-label">Professional Journey</div>
+    <h2>Work <em>Experience</em></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-role">Associate Software Engineer</div>
+        <div class="timeline-company">NICE CXone — Cochabamba, Bolivia</div>
+        <div class="timeline-date">Oct 2023 – Present</div>
+        <div class="timeline-desc">Software Development Engineer working with Agentic AI, C#, ASP.NET, Golang, Docker, AWS, MSSQL, Grafana, CI/CD pipelines, and Postman. Delivering tutorials and internal training sessions.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">College Professor</div>
+        <div class="timeline-company">Universidad Mayor de San Simón — Cochabamba, Bolivia</div>
+        <div class="timeline-date">Jan 2024 – Aug 2024 · Jul 2023 – Aug 2023</div>
+        <div class="timeline-desc">Seasonal lecturer at the Faculty of Science and Technology teaching Systems Dynamics and Logic courses.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Postgraduate Professor</div>
+        <div class="timeline-company">Universidad UCATEC — Cochabamba, Bolivia</div>
+        <div class="timeline-date">Dec 2023</div>
+        <div class="timeline-desc">Postgraduate course teacher for training programs. Member of the academic event evaluating committee.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Associate Software Engineer (Trainee)</div>
+        <div class="timeline-company">NICE CXone — Cochabamba, Bolivia</div>
+        <div class="timeline-date">Jun 2022 – Jun 2023</div>
+        <div class="timeline-desc">Developer and Automation Engineer with C#, ASP.NET, JavaScript, Angular, Docker, MSSQL, Jenkins, Selenium, Git, and Jira.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Freelancer Report Creator</div>
+        <div class="timeline-company">IAESTE ASBL — Luxemburg</div>
+        <div class="timeline-date">Dec 2022 – Jan 2023</div>
+        <div class="timeline-desc">Created activity reports using Adobe InDesign, Adobe XD, and Microsoft Excel.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Coordinator</div>
+        <div class="timeline-company">IAESTE ASBL — Luxemburg</div>
+        <div class="timeline-date">May 2022 – Aug 2022</div>
+        <div class="timeline-desc">Coordinator for receiving remote interns using Adobe XD, Canva, and Google platforms.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Software Engineer (Internship)</div>
+        <div class="timeline-company">KIITOS — Gaza, Palestine</div>
+        <div class="timeline-date">Feb 2022 – Jun 2022</div>
+        <div class="timeline-desc">Software engineering internship working with C#, Scrum, ASP.NET, Jira, GitHub, and GitLab.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Cisco Networking Academy Instructor</div>
+        <div class="timeline-company">La Paz, Bolivia</div>
+        <div class="timeline-date">Jun 2020 – Present</div>
+        <div class="timeline-desc">Programming instructor at the Cisco Networking Academy.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">Women Speed Up Foundation Instructor</div>
+        <div class="timeline-company">La Paz, Bolivia</div>
+        <div class="timeline-date">Oct 2020 – Sept 2021</div>
+        <div class="timeline-desc">Python programming instructor for the Women Speed Up Foundation.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-role">SQL Data Analyst & Data Scientist Scholar</div>
+        <div class="timeline-company">DataCamp — USA (Online)</div>
+        <div class="timeline-date">Mar 2020 – Mar 2024</div>
+        <div class="timeline-desc">SQL Data Analyst and Data Scientist in Python student intern tracks.</div>
+      </div>
+    </div>
 
-		
-	</div>
-	
+    <a href="https://wlo.link/@AllyOR" target="_blank" rel="noopener noreferrer" class="yt-cta">
+      <div class="yt-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+      </div>
+      Watch my courses &amp; tutorials on YouTube →
+    </a>
+  </div>
+</section>
 
+<div class="divider container"></div>
+
+<!-- DESIGN PORTFOLIO -->
+<section id="portfolio" class="fade-in">
+  <div class="container">
+    <div class="section-label">Creative Work</div>
+    <h2>Design <em>Portfolio</em></h2>
+    <div class="portfolio-grid">
+      <a href="https://www.behance.net/AllyOR" target="_blank" rel="noopener noreferrer" class="portfolio-card">
+        <div class="portfolio-label">Behance Portfolio</div>
+        <div class="portfolio-title">UI/UX &amp; Visual Design</div>
+        <div class="portfolio-desc">Explore my design work — interfaces, reports, branding, and multimedia projects using Figma, Adobe XD, Illustrator, InDesign, and more.</div>
+        <div class="portfolio-link">behance.net/AllyOR <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      </a>
+      <div class="portfolio-card" style="cursor:default;">
+        <div class="portfolio-label">Design Stack</div>
+        <div class="portfolio-title">Tools &amp; Software</div>
+        <div class="portfolio-desc">Figma · Adobe XD · Adobe Illustrator · Adobe InDesign · Adobe After Effects · Canva · DaVinci Resolve · NCL-Lua · Audacity</div>
+        <div class="portfolio-link" style="color:var(--muted);">Master's in Multimedia Design — UNIR Spain · Avg 9/10</div>
+      </div>
+      <div class="portfolio-card" style="cursor:default;">
+        <div class="portfolio-label">Highlights</div>
+        <div class="portfolio-title">Selected Projects</div>
+        <div class="portfolio-desc">Activity reports for IAESTE ASBL · Digital content for CIDLA · UX design for coordination tools · Web Development Leadership at PyLadies Cochabamba.</div>
+        <div class="portfolio-link" style="color:var(--muted);">Online Radio &amp; Podcast "Dosis Boliviana" · PySpaces</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<!-- TALKS -->
+<section id="talks" class="fade-in">
+  <div class="container">
+    <div class="section-label">Global Stage</div>
+    <h2>Conferences &amp; <em>Talks</em></h2>
+    <div class="talks-grid">
+      <div class="talk-card"><div class="talk-event">PyCon US 2026</div><div class="talk-meta">Long Beach, California, USA · May 2026 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">CCBOL 2025</div><div class="talk-meta">Oruro, Bolivia · Nov 2025 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyDay Santiago – Python Chile</div><div class="talk-meta">Santiago, Chile · Jun 2025 · Online · AI</div></div>
+      <div class="talk-card"><div class="talk-event">SEUPB Talks – UPB CBBA</div><div class="talk-meta">Cochabamba, Bolivia · Jun 2025 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">International Women's Day – WTM</div><div class="talk-meta">Cochabamba, Bolivia · Apr 2025 · NLP-AI</div></div>
+      <div class="talk-card"><div class="talk-event">NICE CXtech (Global)</div><div class="talk-meta">Online · Jan 2025 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyLadies Conference (Global)</div><div class="talk-meta">Online · Dec 2024 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">NASA Space Apps</div><div class="talk-meta">Cochabamba, Bolivia · Oct 2024 · AI &amp; Big Data</div></div>
+      <div class="talk-card"><div class="talk-event">EuroPython 2023</div><div class="talk-meta">Prague, Czech Republic · Jul 2023 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon US 2023</div><div class="talk-meta">Salt Lake City, Utah, USA · Apr 2023 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">SciPy LatAm 2022</div><div class="talk-meta">Salta, Argentina · Sept 2022 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon US 2022</div><div class="talk-meta">Salt Lake City, Utah, USA · Apr 2022 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyLatam 2022 · PyDay Chile 2022</div><div class="talk-meta">México / Chile · Jul 2022 · Online · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Argentina 2021 · Python Brasil 2021</div><div class="talk-meta">Online · Oct 2021 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Chile 2021 · PyCon LatAm 2021</div><div class="talk-meta">Online · 2021 · AI &amp; PyLadies</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Bolivia 2020</div><div class="talk-meta">Bolivia · Sept 2020 · AI</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="fade-in">
+  <div class="container">
+    <div class="section-label">Academic Background</div>
+    <h2>Education &amp; <em>Studies</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-degree">Master's — Multimedia Design &amp; Production</div><div class="edu-school">Universidad Internacional de La Rioja — Spain</div><div class="edu-date">Feb 2021 – May 2022 · Avg: 9/10</div></div>
+      <div class="edu-card"><div class="edu-degree">Competency-Based Higher Education Diploma</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date">Sept 2020 – Aug 2021 · Avg: 100/100</div></div>
+      <div class="edu-card"><div class="edu-degree">Computer Engineering Degree</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date">Mar 2016 – Oct 2020 · Graduated with Congratulations</div></div>
+      <div class="edu-card"><div class="edu-degree">Computer Engineering (Exchange)</div><div class="edu-school">Universidad Nacional de Catamarca — Argentina</div><div class="edu-date">Aug 2018 – Dec 2018</div></div>
+      <div class="edu-card"><div class="edu-degree">High School Diploma</div><div class="edu-school">Maryknoll High School — Bolivia</div><div class="edu-date">2009 – 2015 · Diploma of Merit &amp; Excellence 2015</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="fade-in">
+  <div class="container">
+    <div class="section-label">Community &amp; Impact</div>
+    <h2>Leadership &amp; <em>Initiatives</em></h2>
+    <div class="leadership-grid">
+      <div class="leader-card"><div class="leader-icon">☁️</div><div><div class="leader-title">AWS User Group Cochabamba Leader</div><div class="leader-sub">Amazon Web Services · Apr 2025 – Present</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🌐</div><div><div class="leader-title">Women Techmakers Ambassador</div><div class="leader-sub">Google · Jul 2023 – Present</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🐍</div><div><div class="leader-title">PyLadies Cochabamba Community Leader</div><div class="leader-sub">PyLadies · Jan 2021 – Jun 2023 · Organizer since Nov 2019</div></div></div>
+      <div class="leader-card"><div class="leader-icon">📊</div><div><div class="leader-title">Data Science Fem Mentor</div><div class="leader-sub">Medellín, Colombia · Apr 2022 – Apr 2023</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🌍</div><div><div class="leader-title">YOUNGA Youth Delegate of Bolivia</div><div class="leader-sub">Bridging the Gap Ventures · 2021 &amp; 2022</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🎙️</div><div><div class="leader-title">PyCon Bolivia 2020 Organizer</div><div class="leader-sub">Python Bolivia Community · Web Development Leader</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider container"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label">Get In Touch</div>
+        <h2>Let's <em>Connect</em></h2>
+        <p style="color:var(--muted);font-size:0.92rem;line-height:1.8;max-width:380px;">
+          Open to collaboration, speaking invitations, and new opportunities.
+          Based in Cochabamba, Bolivia — working with teams worldwide.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:orellanariosalison@gmail.com" class="contact-link">
+          <span class="icon">✉️</span>
+          <div class="contact-link-text"><span>orellanariosalison@gmail.com</span><span class="contact-platform">Email</span></div>
+        </a>
+        <a href="https://linktr.ee/AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="icon">🔗</span>
+          <div class="contact-link-text"><span>linktr.ee/AllyOR</span><span class="contact-platform">All social media &amp; links</span></div>
+        </a>
+        <a href="https://www.behance.net/AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="icon">🎨</span>
+          <div class="contact-link-text"><span>behance.net/AllyOR</span><span class="contact-platform">Design portfolio</span></div>
+        </a>
+        <a href="https://wlo.link/@AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="icon">▶️</span>
+          <div class="contact-link-text"><span>wlo.link/@AllyOR</span><span class="contact-platform">YouTube courses &amp; tutorials</span></div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <span class="icon">📍</span>
+          <div class="contact-link-text"><span>Cochabamba, Bolivia</span><span class="contact-platform">Spanish (Native) · English (C1)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alison Orellana Rios &nbsp;·&nbsp; Software Engineer &amp; AI Speaker &nbsp;·&nbsp; Cochabamba, Bolivia</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
