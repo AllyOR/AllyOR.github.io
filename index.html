@@ -66,9 +66,14 @@
  
   .nav-logo { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent); letter-spacing: 0.1em; }
  
+  .nav-actions { display: flex; align-items: center; gap: 1.25rem; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
+  .lang-switch { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.03); }
+  .lang-btn { background: transparent; color: var(--muted); border: none; padding: 0.45rem 0.8rem; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; }
+  .lang-btn:hover { color: var(--text); background: rgba(180,142,247,0.08); }
+  .lang-btn.active { background: var(--accent); color: #0d0b1a; font-weight: 500; }
  
   #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; }
  
@@ -180,6 +185,7 @@
     .avatar-card { display: none; }
     .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
     nav .nav-links { display: none; }
+    .nav-actions { gap: 0.75rem; }
     .talks-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -188,14 +194,20 @@
  
 <nav>
   <div class="nav-logo">AOR // Portfolio</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#portfolio">Design</a></li>
-    <li><a href="#talks">Talks</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-actions">
+    <ul class="nav-links">
+      <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
+      <li><a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a></li>
+      <li><a href="#portfolio" data-en="Design" data-es="Diseño">Design</a></li>
+      <li><a href="#talks" data-en="Talks" data-es="Charlas">Talks</a></li>
+      <li><a href="#education" data-en="Education" data-es="Educación">Education</a></li>
+      <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+    </ul>
+    <div class="lang-switch" aria-label="Language selector">
+      <button type="button" class="lang-btn active" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -203,19 +215,19 @@
   <div class="container">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-tag">Software Engineer · AI Speaker · Educator</div>
+        <div class="hero-tag" data-en="Software Engineer · AI Speaker · Educator" data-es="Ingeniera de Software · Speaker en IA · Educadora">Software Engineer · AI Speaker · Educator</div>
         <h1>
           <span class="name-line">Alison</span>
           <span class="name-line"><em class="accent-word">Orellana Rios</em></span>
         </h1>
-        <p class="hero-desc">
+        <p class="hero-desc" data-en="Associate <strong>Software Engineer</strong>, working at the intersection of <strong>Agentic AI</strong> and cloud infrastructure. International conference speaker, community leader, and passionate educator across Latin America and beyond." data-es="<strong>Associate Software Engineer</strong>, trabajando en la intersección de la <strong>IA Agéntica</strong> y la infraestructura en la nube. Speaker internacional en conferencias, líder de comunidad y educadora apasionada en Latinoamérica y más allá.">
           Associate <strong>Software Engineer</strong>, working at the intersection of
           <strong>Agentic AI</strong> and cloud infrastructure. International conference speaker,
           community leader, and passionate educator across Latin America and beyond.
         </p>
         <div class="hero-cta">
-          <a href="#experience" class="btn btn-primary">View Experience</a>
-          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          <a href="#experience" class="btn btn-primary" data-en="View Experience" data-es="Ver experiencia">View Experience</a>
+          <a href="#contact" class="btn btn-outline" data-en="Get in Touch" data-es="Contactarme">Get in Touch</a>
         </div>
       </div>
       <div class="avatar-card">
@@ -232,13 +244,13 @@
           </div>
         </div>
         <div class="avatar-deco2"></div>
-        <div style="text-align:center;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);line-height:1.7;">
+        <div style="text-align:center;margin-top:1rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);line-height:1.7;" data-en="Cochabamba, Bolivia<br>Available Worldwide" data-es="Cochabamba, Bolivia<br>Disponible en todo el mundo">
           Cochabamba, Bolivia<br>Available Worldwide
         </div>
         <div class="stats-row">
-          <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Talks</span></div>
-          <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Eng.</span></div>
-          <div class="stat"><span class="stat-num">C1</span><span class="stat-label">English</span></div>
+          <div class="stat"><span class="stat-num">30+</span><span class="stat-label" data-en="Talks" data-es="Charlas">Talks</span></div>
+          <div class="stat"><span class="stat-num">3+</span><span class="stat-label" data-en="Years Eng." data-es="Años Exp.">Years Eng.</span></div>
+          <div class="stat"><span class="stat-num">C1</span><span class="stat-label" data-en="English" data-es="Inglés">English</span></div>
         </div>
       </div>
     </div>
@@ -250,8 +262,8 @@
 <!-- SKILLS -->
 <section id="skills" class="fade-in">
   <div class="container">
-    <div class="section-label">Technical Proficiency</div>
-    <h2>Skills &amp; <em>Tools</em></h2>
+    <div class="section-label" data-en="Technical Proficiency" data-es="Competencias técnicas">Technical Proficiency</div>
+    <h2 data-en="Skills &amp; <em>Tools</em>" data-es="Habilidades y <em>herramientas</em>">Skills &amp; <em>Tools</em></h2>
     <div class="skills-grid">
       <div class="skill-pill">Python</div><div class="skill-pill">C#</div><div class="skill-pill">Go</div>
       <div class="skill-pill">Java</div><div class="skill-pill">JavaScript</div><div class="skill-pill">PHP</div>
@@ -274,72 +286,72 @@
 <!-- EXPERIENCE -->
 <section id="experience" class="fade-in">
   <div class="container">
-    <div class="section-label">Professional Journey</div>
-    <h2>Work <em>Experience</em></h2>
+    <div class="section-label" data-en="Professional Journey" data-es="Trayectoria profesional">Professional Journey</div>
+    <h2 data-en="Work <em>Experience</em>" data-es="<em>Experiencia</em> laboral">Work <em>Experience</em></h2>
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-role">Associate Software Engineer</div>
+        <div class="timeline-role" data-en="Associate Software Engineer" data-es="Associate Software Engineer">Associate Software Engineer</div>
         <div class="timeline-company">NICE CXone — Cochabamba, Bolivia</div>
         <div class="timeline-date">Oct 2023 – Jun 2026</div>
-        <div class="timeline-desc">Software Development Engineer working with Agentic AI, C#, ASP.NET, TypeScript, React, Golang, Docker, AWS, MSSQL, Grafana, CI/CD pipelines, and Postman. Delivering tutorials and internal training sessions.</div>
+        <div class="timeline-desc" data-en="Software Development Engineer working with Agentic AI, C#, ASP.NET, TypeScript, React, Golang, Docker, AWS, MSSQL, Grafana, CI/CD pipelines, and Postman. Delivering tutorials and internal training sessions." data-es="Ingeniera de desarrollo de software trabajando con IA Agéntica, C#, ASP.NET, TypeScript, React, Golang, Docker, AWS, MSSQL, Grafana, pipelines CI/CD y Postman. Impartiendo tutoriales y capacitaciones internas.">Software Development Engineer working with Agentic AI, C#, ASP.NET, TypeScript, React, Golang, Docker, AWS, MSSQL, Grafana, CI/CD pipelines, and Postman. Delivering tutorials and internal training sessions.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">College Professor</div>
+        <div class="timeline-role" data-en="College Professor" data-es="Docente universitaria">College Professor</div>
         <div class="timeline-company">Universidad Mayor de San Simón — Cochabamba, Bolivia</div>
         <div class="timeline-date">Jan 2024 – Aug 2024 · Jul 2023 – Aug 2023</div>
-        <div class="timeline-desc">Seasonal lecturer at the Faculty of Science and Technology teaching Systems Dynamics and Logic courses.</div>
+        <div class="timeline-desc" data-en="Seasonal lecturer at the Faculty of Science and Technology teaching Systems Dynamics and Logic courses." data-es="Docente temporal en la Facultad de Ciencias y Tecnología, impartiendo Dinámica de Sistemas y Lógica.">Seasonal lecturer at the Faculty of Science and Technology teaching Systems Dynamics and Logic courses.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Postgraduate Professor</div>
+        <div class="timeline-role" data-en="Postgraduate Professor" data-es="Docente de posgrado">Postgraduate Professor</div>
         <div class="timeline-company">Universidad UCATEC — Cochabamba, Bolivia</div>
         <div class="timeline-date">Dec 2023</div>
-        <div class="timeline-desc">Postgraduate course teacher for training programs. Member of the academic event evaluating committee.</div>
+        <div class="timeline-desc" data-en="Postgraduate course teacher for training programs. Member of the academic event evaluating committee." data-es="Docente de cursos de posgrado para programas de formación. Miembro del comité evaluador de eventos académicos.">Postgraduate course teacher for training programs. Member of the academic event evaluating committee.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Associate Software Engineer (Trainee)</div>
+        <div class="timeline-role" data-en="Associate Software Engineer (Trainee)" data-es="Associate Software Engineer (Trainee)">Associate Software Engineer (Trainee)</div>
         <div class="timeline-company">NICE CXone — Cochabamba, Bolivia</div>
         <div class="timeline-date">Jun 2022 – Jun 2023</div>
-        <div class="timeline-desc">Developer and Automation Engineer with C#, ASP.NET, JavaScript, Angular, Docker, MSSQL, Jenkins, Selenium, Git, and Jira.</div>
+        <div class="timeline-desc" data-en="Developer and Automation Engineer with C#, ASP.NET, JavaScript, Angular, Docker, MSSQL, Jenkins, Selenium, Git, and Jira." data-es="Desarrolladora e ingeniera de automatización con C#, ASP.NET, JavaScript, Angular, Docker, MSSQL, Jenkins, Selenium, Git y Jira.">Developer and Automation Engineer with C#, ASP.NET, JavaScript, Angular, Docker, MSSQL, Jenkins, Selenium, Git, and Jira.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Freelancer Report Creator</div>
+        <div class="timeline-role" data-en="Freelancer Report Creator" data-es="Creadora freelance de reportes">Freelancer Report Creator</div>
         <div class="timeline-company">IAESTE ASBL — Luxemburg</div>
         <div class="timeline-date">Dec 2022 – Jan 2023</div>
-        <div class="timeline-desc">Created activity reports using Adobe InDesign, Adobe XD, and Microsoft Excel.</div>
+        <div class="timeline-desc" data-en="Created activity reports using Adobe InDesign, Adobe XD, and Microsoft Excel." data-es="Creación de reportes de actividades usando Adobe InDesign, Adobe XD y Microsoft Excel.">Created activity reports using Adobe InDesign, Adobe XD, and Microsoft Excel.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Coordinator</div>
+        <div class="timeline-role" data-en="Coordinator" data-es="Coordinadora">Coordinator</div>
         <div class="timeline-company">IAESTE ASBL — Luxemburg</div>
         <div class="timeline-date">May 2022 – Aug 2022</div>
-        <div class="timeline-desc">Coordinator for receiving remote interns using Adobe XD, Canva, and Google platforms.</div>
+        <div class="timeline-desc" data-en="Coordinator for receiving remote interns using Adobe XD, Canva, and Google platforms." data-es="Coordinadora para la recepción de pasantes remotos usando Adobe XD, Canva y plataformas de Google.">Coordinator for receiving remote interns using Adobe XD, Canva, and Google platforms.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Software Engineer (Internship)</div>
+        <div class="timeline-role" data-en="Software Engineer (Internship)" data-es="Ingeniera de Software (Pasantía)">Software Engineer (Internship)</div>
         <div class="timeline-company">KIITOS — Netherlands</div>
         <div class="timeline-date">Feb 2022 – Jun 2022</div>
-        <div class="timeline-desc">Software engineering internship working with C#, Scrum, ASP.NET, Jira, GitHub, and GitLab.</div>
+        <div class="timeline-desc" data-en="Software engineering internship working with C#, Scrum, ASP.NET, Jira, GitHub, and GitLab." data-es="Pasantía en ingeniería de software trabajando con C#, Scrum, ASP.NET, Jira, GitHub y GitLab.">Software engineering internship working with C#, Scrum, ASP.NET, Jira, GitHub, and GitLab.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Cisco Networking Academy Instructor</div>
+        <div class="timeline-role" data-en="Cisco Networking Academy Instructor" data-es="Instructora de Cisco Networking Academy">Cisco Networking Academy Instructor</div>
         <div class="timeline-company">La Paz, Bolivia</div>
         <div class="timeline-date">Jun 2020 – Present</div>
-        <div class="timeline-desc">Programming instructor at the Cisco Networking Academy.</div>
+        <div class="timeline-desc" data-en="Programming instructor at the Cisco Networking Academy." data-es="Instructora de programación en Cisco Networking Academy.">Programming instructor at the Cisco Networking Academy.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">Women Speed Up Foundation Instructor</div>
+        <div class="timeline-role" data-en="Women Speed Up Foundation Instructor" data-es="Instructora en Women Speed Up Foundation">Women Speed Up Foundation Instructor</div>
         <div class="timeline-company">La Paz, Bolivia</div>
         <div class="timeline-date">Oct 2020 – Sept 2021</div>
-        <div class="timeline-desc">Python programming instructor for the Women Speed Up Foundation.</div>
+        <div class="timeline-desc" data-en="Python programming instructor for the Women Speed Up Foundation." data-es="Instructora de programación en Python para Women Speed Up Foundation.">Python programming instructor for the Women Speed Up Foundation.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-role">SQL Data Analyst & Data Scientist Scholar</div>
+        <div class="timeline-role" data-en="SQL Data Analyst &amp; Data Scientist Scholar" data-es="Becaria en SQL Data Analyst y Data Scientist">SQL Data Analyst &amp; Data Scientist Scholar</div>
         <div class="timeline-company">DataCamp — USA (Online)</div>
         <div class="timeline-date">Mar 2020 – Mar 2024</div>
-        <div class="timeline-desc">SQL Data Analyst and Data Scientist in Python student intern tracks.</div>
+        <div class="timeline-desc" data-en="SQL Data Analyst and Data Scientist in Python student intern tracks." data-es="Trayectorias estudiantiles y de práctica en SQL Data Analyst y Data Scientist en Python.">SQL Data Analyst and Data Scientist in Python student intern tracks.</div>
       </div>
     </div>
 
-    <a href="https://wlo.link/@AllyOR" target="_blank" rel="noopener noreferrer" class="yt-cta">
+    <a href="https://wlo.link/@AllyOR" target="_blank" rel="noopener noreferrer" class="yt-cta" data-en="Watch my courses &amp; tutorials on YouTube →" data-es="Ver mis cursos y tutoriales en YouTube →">
       <div class="yt-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
       </div>
@@ -353,26 +365,26 @@
 <!-- DESIGN PORTFOLIO -->
 <section id="portfolio" class="fade-in">
   <div class="container">
-    <div class="section-label">Creative Work</div>
-    <h2>Design <em>Portfolio</em></h2>
+    <div class="section-label" data-en="Creative Work" data-es="Trabajo creativo">Creative Work</div>
+    <h2 data-en="Design <em>Portfolio</em>" data-es="<em>Portafolio</em> de diseño">Design <em>Portfolio</em></h2>
     <div class="portfolio-grid">
       <a href="https://www.behance.net/AllyOR" target="_blank" rel="noopener noreferrer" class="portfolio-card">
-        <div class="portfolio-label">Behance Portfolio</div>
-        <div class="portfolio-title">UI/UX &amp; Visual Design</div>
-        <div class="portfolio-desc">Explore my design work — interfaces, reports, branding, and multimedia projects using Figma, Adobe XD, Illustrator, InDesign, and more.</div>
+        <div class="portfolio-label" data-en="Behance Portfolio" data-es="Portafolio en Behance">Behance Portfolio</div>
+        <div class="portfolio-title" data-en="UI/UX &amp; Visual Design" data-es="Diseño UI/UX y visual">UI/UX &amp; Visual Design</div>
+        <div class="portfolio-desc" data-en="Explore my design work — interfaces, reports, branding, and multimedia projects using Figma, Adobe XD, Illustrator, InDesign, and more." data-es="Explora mi trabajo de diseño: interfaces, reportes, branding y proyectos multimedia usando Figma, Adobe XD, Illustrator, InDesign y más.">Explore my design work — interfaces, reports, branding, and multimedia projects using Figma, Adobe XD, Illustrator, InDesign, and more.</div>
         <div class="portfolio-link">behance.net/AllyOR <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
       </a>
       <div class="portfolio-card" style="cursor:default;">
-        <div class="portfolio-label">Design Stack</div>
-        <div class="portfolio-title">Tools &amp; Software</div>
+        <div class="portfolio-label" data-en="Design Stack" data-es="Stack de diseño">Design Stack</div>
+        <div class="portfolio-title" data-en="Tools &amp; Software" data-es="Herramientas y software">Tools &amp; Software</div>
         <div class="portfolio-desc">Figma · Adobe XD · Adobe Illustrator · Adobe InDesign · Adobe After Effects · Canva · DaVinci Resolve · NCL-Lua · Audacity</div>
-        <div class="portfolio-link" style="color:var(--muted);">Master's in Multimedia Design — UNIR Spain · Avg 9/10</div>
+        <div class="portfolio-link" style="color:var(--muted);" data-en="Master's in Multimedia Design — UNIR Spain · Avg 9/10" data-es="Máster en Diseño y Producción Multimedia — UNIR España · Promedio 9/10">Master's in Multimedia Design — UNIR Spain · Avg 9/10</div>
       </div>
       <div class="portfolio-card" style="cursor:default;">
-        <div class="portfolio-label">Highlights</div>
-        <div class="portfolio-title">Selected Projects</div>
-        <div class="portfolio-desc">Activity reports for IAESTE ASBL · Digital content for CIDLA · UX design for coordination tools · Web Development Leadership at PyLadies Cochabamba.</div>
-        <div class="portfolio-link" style="color:var(--muted);">Online Radio &amp; Podcast "Dosis Boliviana" · PySpaces</div>
+        <div class="portfolio-label" data-en="Highlights" data-es="Destacados">Highlights</div>
+        <div class="portfolio-title" data-en="Selected Projects" data-es="Proyectos seleccionados">Selected Projects</div>
+        <div class="portfolio-desc" data-en="Activity reports for IAESTE ASBL · Digital content for CIDLA · UX design for coordination tools · Web Development Leadership at PyLadies Cochabamba." data-es="Reportes de actividades para IAESTE ASBL · Contenido digital para CIDLA · Diseño UX para herramientas de coordinación · Liderazgo en desarrollo web en PyLadies Cochabamba.">Activity reports for IAESTE ASBL · Digital content for CIDLA · UX design for coordination tools · Web Development Leadership at PyLadies Cochabamba.</div>
+        <div class="portfolio-link" style="color:var(--muted);" data-en="Online Radio &amp; Podcast &quot;Dosis Boliviana&quot; · PySpaces" data-es="Radio online y podcast &quot;Dosis Boliviana&quot; · PySpaces">Online Radio &amp; Podcast "Dosis Boliviana" · PySpaces</div>
       </div>
     </div>
   </div>
@@ -383,25 +395,25 @@
 <!-- TALKS -->
 <section id="talks" class="fade-in">
   <div class="container">
-    <div class="section-label">Global Stage</div>
-    <h2>Conferences &amp; <em>Talks</em></h2>
+    <div class="section-label" data-en="Global Stage" data-es="Escenario global">Global Stage</div>
+    <h2 data-en="Conferences &amp; <em>Talks</em>" data-es="Conferencias y <em>charlas</em>">Conferences &amp; <em>Talks</em></h2>
     <div class="talks-grid">
-      <div class="talk-card"><div class="talk-event">PyCon US 2026</div><div class="talk-meta">Long Beach, California, USA · May 2026 · In-Person · AI</div></div>
-      <div class="talk-card"><div class="talk-event">CCBOL 2025</div><div class="talk-meta">Oruro, Bolivia · Nov 2025 · In-Person · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyDay Santiago – Python Chile</div><div class="talk-meta">Santiago, Chile · Jun 2025 · Online · AI</div></div>
-      <div class="talk-card"><div class="talk-event">SEUPB Talks – UPB CBBA</div><div class="talk-meta">Cochabamba, Bolivia · Jun 2025 · In-Person · AI</div></div>
-      <div class="talk-card"><div class="talk-event">International Women's Day – WTM</div><div class="talk-meta">Cochabamba, Bolivia · Apr 2025 · NLP-AI</div></div>
-      <div class="talk-card"><div class="talk-event">NICE CXtech (Global)</div><div class="talk-meta">Online · Jan 2025 · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyLadies Conference (Global)</div><div class="talk-meta">Online · Dec 2024 · AI</div></div>
-      <div class="talk-card"><div class="talk-event">NASA Space Apps</div><div class="talk-meta">Cochabamba, Bolivia · Oct 2024 · AI &amp; Big Data</div></div>
-      <div class="talk-card"><div class="talk-event">EuroPython 2023</div><div class="talk-meta">Prague, Czech Republic · Jul 2023 · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyCon US 2023</div><div class="talk-meta">Salt Lake City, Utah, USA · Apr 2023 · In-Person · AI</div></div>
-      <div class="talk-card"><div class="talk-event">SciPy LatAm 2022</div><div class="talk-meta">Salta, Argentina · Sept 2022 · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyCon US 2022</div><div class="talk-meta">Salt Lake City, Utah, USA · Apr 2022 · In-Person · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyLatam 2022 · PyDay Chile 2022</div><div class="talk-meta">México / Chile · Jul 2022 · Online · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyCon Argentina 2021 · Python Brasil 2021</div><div class="talk-meta">Online · Oct 2021 · AI</div></div>
-      <div class="talk-card"><div class="talk-event">PyCon Chile 2021 · PyCon LatAm 2021</div><div class="talk-meta">Online · 2021 · AI &amp; PyLadies</div></div>
-      <div class="talk-card"><div class="talk-event">PyCon Bolivia 2020</div><div class="talk-meta">Bolivia · Sept 2020 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon US 2026</div><div class="talk-meta" data-en="Long Beach, California, USA · May 2026 · In-Person · AI" data-es="Long Beach, California, USA · May 2026 · Presencial · IA">Long Beach, California, USA · May 2026 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">CCBOL 2025</div><div class="talk-meta" data-en="Oruro, Bolivia · Nov 2025 · In-Person · AI" data-es="Oruro, Bolivia · Nov 2025 · Presencial · IA">Oruro, Bolivia · Nov 2025 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyDay Santiago – Python Chile</div><div class="talk-meta" data-en="Santiago, Chile · Jun 2025 · Online · AI" data-es="Santiago, Chile · Jun 2025 · Online · IA">Santiago, Chile · Jun 2025 · Online · AI</div></div>
+      <div class="talk-card"><div class="talk-event">SEUPB Talks – UPB CBBA</div><div class="talk-meta" data-en="Cochabamba, Bolivia · Jun 2025 · In-Person · AI" data-es="Cochabamba, Bolivia · Jun 2025 · Presencial · IA">Cochabamba, Bolivia · Jun 2025 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">International Women's Day – WTM</div><div class="talk-meta" data-en="Cochabamba, Bolivia · Apr 2025 · NLP-AI" data-es="Cochabamba, Bolivia · Apr 2025 · PLN-IA">Cochabamba, Bolivia · Apr 2025 · NLP-AI</div></div>
+      <div class="talk-card"><div class="talk-event">NICE CXtech (Global)</div><div class="talk-meta" data-en="Online · Jan 2025 · AI" data-es="Online · Jan 2025 · IA">Online · Jan 2025 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyLadies Conference (Global)</div><div class="talk-meta" data-en="Online · Dec 2024 · AI" data-es="Online · Dec 2024 · IA">Online · Dec 2024 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">NASA Space Apps</div><div class="talk-meta" data-en="Cochabamba, Bolivia · Oct 2024 · AI &amp; Big Data" data-es="Cochabamba, Bolivia · Oct 2024 · IA y Big Data">Cochabamba, Bolivia · Oct 2024 · AI &amp; Big Data</div></div>
+      <div class="talk-card"><div class="talk-event">EuroPython 2023</div><div class="talk-meta" data-en="Prague, Czech Republic · Jul 2023 · AI" data-es="Prague, Czech Republic · Jul 2023 · IA">Prague, Czech Republic · Jul 2023 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon US 2023</div><div class="talk-meta" data-en="Salt Lake City, Utah, USA · Apr 2023 · In-Person · AI" data-es="Salt Lake City, Utah, USA · Apr 2023 · Presencial · IA">Salt Lake City, Utah, USA · Apr 2023 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">SciPy LatAm 2022</div><div class="talk-meta" data-en="Salta, Argentina · Sept 2022 · AI" data-es="Salta, Argentina · Sept 2022 · IA">Salta, Argentina · Sept 2022 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon US 2022</div><div class="talk-meta" data-en="Salt Lake City, Utah, USA · Apr 2022 · In-Person · AI" data-es="Salt Lake City, Utah, USA · Apr 2022 · Presencial · IA">Salt Lake City, Utah, USA · Apr 2022 · In-Person · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyLatam 2022 · PyDay Chile 2022</div><div class="talk-meta" data-en="México / Chile · Jul 2022 · Online · AI" data-es="México / Chile · Jul 2022 · Online · IA">México / Chile · Jul 2022 · Online · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Argentina 2021 · Python Brasil 2021</div><div class="talk-meta" data-en="Online · Oct 2021 · AI" data-es="Online · Oct 2021 · IA">Online · Oct 2021 · AI</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Chile 2021 · PyCon LatAm 2021</div><div class="talk-meta" data-en="Online · 2021 · AI &amp; PyLadies" data-es="Online · 2021 · IA y PyLadies">Online · 2021 · AI &amp; PyLadies</div></div>
+      <div class="talk-card"><div class="talk-event">PyCon Bolivia 2020</div><div class="talk-meta" data-en="Bolivia · Sept 2020 · AI" data-es="Bolivia · Sept 2020 · IA">Bolivia · Sept 2020 · AI</div></div>
     </div>
   </div>
 </section>
@@ -411,14 +423,14 @@
 <!-- EDUCATION -->
 <section id="education" class="fade-in">
   <div class="container">
-    <div class="section-label">Academic Background</div>
-    <h2>Education &amp; <em>Studies</em></h2>
+    <div class="section-label" data-en="Academic Background" data-es="Formación académica">Academic Background</div>
+    <h2 data-en="Education &amp; <em>Studies</em>" data-es="Educación y <em>estudios</em>">Education &amp; <em>Studies</em></h2>
     <div class="edu-grid">
-      <div class="edu-card"><div class="edu-degree">Master's — Multimedia Design &amp; Production</div><div class="edu-school">Universidad Internacional de La Rioja — Spain</div><div class="edu-date">Feb 2021 – May 2022 · Avg: 9/10</div></div>
-      <div class="edu-card"><div class="edu-degree">Competency-Based Higher Education Diploma</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date">Sept 2020 – Aug 2021 · Avg: 100/100</div></div>
-      <div class="edu-card"><div class="edu-degree">Computer Engineering Degree</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date">Mar 2016 – Oct 2020 · Graduated with Congratulations</div></div>
-      <div class="edu-card"><div class="edu-degree">Computer Engineering (Exchange)</div><div class="edu-school">Universidad Nacional de Catamarca — Argentina</div><div class="edu-date">Aug 2018 – Dec 2018</div></div>
-      <div class="edu-card"><div class="edu-degree">High School Diploma</div><div class="edu-school">Maryknoll High School — Bolivia</div><div class="edu-date">2009 – 2015 · Diploma of Merit &amp; Excellence 2015</div></div>
+      <div class="edu-card"><div class="edu-degree" data-en="Master's — Multimedia Design &amp; Production" data-es="Máster — Diseño y Producción Multimedia">Master's — Multimedia Design &amp; Production</div><div class="edu-school">Universidad Internacional de La Rioja — Spain</div><div class="edu-date" data-en="Feb 2021 – May 2022 · Avg: 9/10" data-es="Feb 2021 – May 2022 · Promedio: 9/10">Feb 2021 – May 2022 · Avg: 9/10</div></div>
+      <div class="edu-card"><div class="edu-degree" data-en="Competency-Based Higher Education Diploma" data-es="Diplomado en Educación Superior Basada en Competencias">Competency-Based Higher Education Diploma</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date" data-en="Sept 2020 – Aug 2021 · Avg: 100/100" data-es="Sept 2020 – Aug 2021 · Promedio: 100/100">Sept 2020 – Aug 2021 · Avg: 100/100</div></div>
+      <div class="edu-card"><div class="edu-degree" data-en="Computer Engineering Degree" data-es="Ingeniería de Sistemas">Computer Engineering Degree</div><div class="edu-school">Universidad Mayor de San Simón — Bolivia</div><div class="edu-date" data-en="Mar 2016 – Oct 2020 · Graduated with Congratulations" data-es="Mar 2016 – Oct 2020 · Graduación con felicitaciones">Mar 2016 – Oct 2020 · Graduated with Congratulations</div></div>
+      <div class="edu-card"><div class="edu-degree" data-en="Computer Engineering (Exchange)" data-es="Ingeniería de Sistemas (Intercambio)">Computer Engineering (Exchange)</div><div class="edu-school">Universidad Nacional de Catamarca — Argentina</div><div class="edu-date">Aug 2018 – Dec 2018</div></div>
+      <div class="edu-card"><div class="edu-degree" data-en="High School Diploma" data-es="Bachillerato">High School Diploma</div><div class="edu-school">Maryknoll High School — Bolivia</div><div class="edu-date" data-en="2009 – 2015 · Diploma of Merit &amp; Excellence 2015" data-es="2009 – 2015 · Diploma al mérito y excelencia 2015">2009 – 2015 · Diploma of Merit &amp; Excellence 2015</div></div>
     </div>
   </div>
 </section>
@@ -428,15 +440,15 @@
 <!-- LEADERSHIP -->
 <section id="leadership" class="fade-in">
   <div class="container">
-    <div class="section-label">Community &amp; Impact</div>
-    <h2>Leadership &amp; <em>Initiatives</em></h2>
+    <div class="section-label" data-en="Community &amp; Impact" data-es="Comunidad e impacto">Community &amp; Impact</div>
+    <h2 data-en="Leadership &amp; <em>Initiatives</em>" data-es="Liderazgo e <em>iniciativas</em>">Leadership &amp; <em>Initiatives</em></h2>
     <div class="leadership-grid">
-      <div class="leader-card"><div class="leader-icon">☁️</div><div><div class="leader-title">AWS User Group Cochabamba Leader</div><div class="leader-sub">Amazon Web Services · Apr 2025 – Present</div></div></div>
-      <div class="leader-card"><div class="leader-icon">🌐</div><div><div class="leader-title">Women Techmakers Ambassador</div><div class="leader-sub">Google · Jul 2023 – Present</div></div></div>
-      <div class="leader-card"><div class="leader-icon">🐍</div><div><div class="leader-title">PyLadies Cochabamba Community Leader</div><div class="leader-sub">PyLadies · Jan 2021 – Jun 2023 · Organizer since Nov 2019</div></div></div>
-      <div class="leader-card"><div class="leader-icon">📊</div><div><div class="leader-title">Data Science Fem Mentor</div><div class="leader-sub">Medellín, Colombia · Apr 2022 – Apr 2023</div></div></div>
-      <div class="leader-card"><div class="leader-icon">🌍</div><div><div class="leader-title">YOUNGA Youth Delegate of Bolivia</div><div class="leader-sub">Bridging the Gap Ventures · 2021 &amp; 2022</div></div></div>
-      <div class="leader-card"><div class="leader-icon">🎙️</div><div><div class="leader-title">PyCon Bolivia 2020 Organizer</div><div class="leader-sub">Python Bolivia Community · Web Development Leader</div></div></div>
+      <div class="leader-card"><div class="leader-icon">☁️</div><div><div class="leader-title" data-en="AWS User Group Cochabamba Leader" data-es="Líder de AWS User Group Cochabamba">AWS User Group Cochabamba Leader</div><div class="leader-sub" data-en="Amazon Web Services · Apr 2025 – Present" data-es="Amazon Web Services · Apr 2025 – Actualidad">Amazon Web Services · Apr 2025 – Present</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🌐</div><div><div class="leader-title" data-en="Women Techmakers Ambassador" data-es="Embajadora Women Techmakers">Women Techmakers Ambassador</div><div class="leader-sub" data-en="Google · Jul 2023 – Present" data-es="Google · Jul 2023 – Actualidad">Google · Jul 2023 – Present</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🐍</div><div><div class="leader-title" data-en="PyLadies Cochabamba Community Leader" data-es="Líder de la comunidad PyLadies Cochabamba">PyLadies Cochabamba Community Leader</div><div class="leader-sub" data-en="PyLadies · Jan 2021 – Jun 2023 · Organizer since Nov 2019" data-es="PyLadies · Jan 2021 – Jun 2023 · Organizadora desde Nov 2019">PyLadies · Jan 2021 – Jun 2023 · Organizer since Nov 2019</div></div></div>
+      <div class="leader-card"><div class="leader-icon">📊</div><div><div class="leader-title" data-en="Data Science Fem Mentor" data-es="Mentora en Data Science Fem">Data Science Fem Mentor</div><div class="leader-sub">Medellín, Colombia · Apr 2022 – Apr 2023</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🌍</div><div><div class="leader-title" data-en="YOUNGA Youth Delegate of Bolivia" data-es="Delegada juvenil de Bolivia en YOUNGA">YOUNGA Youth Delegate of Bolivia</div><div class="leader-sub">Bridging the Gap Ventures · 2021 &amp; 2022</div></div></div>
+      <div class="leader-card"><div class="leader-icon">🎙️</div><div><div class="leader-title" data-en="PyCon Bolivia 2020 Organizer" data-es="Organizadora de PyCon Bolivia 2020">PyCon Bolivia 2020 Organizer</div><div class="leader-sub" data-en="Python Bolivia Community · Web Development Leader" data-es="Comunidad Python Bolivia · Líder de desarrollo web">Python Bolivia Community · Web Development Leader</div></div></div>
     </div>
   </div>
 </section>
@@ -448,9 +460,9 @@
   <div class="container">
     <div class="contact-inner">
       <div>
-        <div class="section-label">Get In Touch</div>
-        <h2>Let's <em>Connect</em></h2>
-        <p style="color:var(--muted);font-size:0.92rem;line-height:1.8;max-width:380px;">
+        <div class="section-label" data-en="Get In Touch" data-es="Contacto">Get In Touch</div>
+        <h2 data-en="Let's <em>Connect</em>" data-es="<em>Conectemos</em>">Let's <em>Connect</em></h2>
+        <p style="color:var(--muted);font-size:0.92rem;line-height:1.8;max-width:380px;" data-en="Open to collaboration, speaking invitations, and new opportunities. Based in Cochabamba, Bolivia — working with teams worldwide." data-es="Abierta a colaboraciones, invitaciones para charlas y nuevas oportunidades. Basada en Cochabamba, Bolivia, trabajando con equipos de todo el mundo.">
           Open to collaboration, speaking invitations, and new opportunities.
           Based in Cochabamba, Bolivia — working with teams worldwide.
         </p>
@@ -458,23 +470,23 @@
       <div class="contact-links">
         <a href="mailto:orellanariosalison@gmail.com" class="contact-link">
           <span class="icon">✉️</span>
-          <div class="contact-link-text"><span>orellanariosalison@gmail.com</span><span class="contact-platform">Email</span></div>
+          <div class="contact-link-text"><span>orellanariosalison@gmail.com</span><span class="contact-platform" data-en="Email" data-es="Correo">Email</span></div>
         </a>
         <a href="https://linktr.ee/AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="icon">🔗</span>
-          <div class="contact-link-text"><span>linktr.ee/AllyOR</span><span class="contact-platform">All social media &amp; links</span></div>
+          <div class="contact-link-text"><span>linktr.ee/AllyOR</span><span class="contact-platform" data-en="All social media &amp; links" data-es="Redes sociales y enlaces">All social media &amp; links</span></div>
         </a>
         <a href="https://www.behance.net/AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="icon">🎨</span>
-          <div class="contact-link-text"><span>behance.net/AllyOR</span><span class="contact-platform">Design portfolio</span></div>
+          <div class="contact-link-text"><span>behance.net/AllyOR</span><span class="contact-platform" data-en="Design portfolio" data-es="Portafolio de diseño">Design portfolio</span></div>
         </a>
         <a href="https://wlo.link/@AllyOR" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="icon">▶️</span>
-          <div class="contact-link-text"><span>wlo.link/@AllyOR</span><span class="contact-platform">YouTube courses &amp; tutorials</span></div>
+          <div class="contact-link-text"><span>wlo.link/@AllyOR</span><span class="contact-platform" data-en="YouTube courses &amp; tutorials" data-es="Cursos y tutoriales en YouTube">YouTube courses &amp; tutorials</span></div>
         </a>
         <div class="contact-link" style="cursor:default;">
           <span class="icon">📍</span>
-          <div class="contact-link-text"><span>Cochabamba, Bolivia</span><span class="contact-platform">Spanish (Native) · English (C1)</span></div>
+          <div class="contact-link-text"><span>Cochabamba, Bolivia</span><span class="contact-platform" data-en="Spanish (Native) · English (C1)" data-es="Español (nativo) · Inglés (C1)">Spanish (Native) · English (C1)</span></div>
         </div>
       </div>
     </div>
@@ -482,7 +494,7 @@
 </section>
 
 <footer>
-  <p>© 2026 Alison Orellana Rios &nbsp;·&nbsp; Software Engineer &amp; AI Speaker &nbsp;·&nbsp; Cochabamba, Bolivia</p>
+  <p data-en="© 2026 Alison Orellana Rios &nbsp;·&nbsp; Software Engineer &amp; AI Speaker &nbsp;·&nbsp; Cochabamba, Bolivia" data-es="© 2026 Alison Orellana Rios &nbsp;·&nbsp; Ingeniera de Software y Speaker en IA &nbsp;·&nbsp; Cochabamba, Bolivia">© 2026 Alison Orellana Rios &nbsp;·&nbsp; Software Engineer &amp; AI Speaker &nbsp;·&nbsp; Cochabamba, Bolivia</p>
 </footer>
 
 <script>
@@ -490,6 +502,31 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const languageButtons = document.querySelectorAll('.lang-btn');
+  const translatableElements = document.querySelectorAll('[data-en][data-es]');
+
+  function applyLanguage(lang) {
+    translatableElements.forEach((element) => {
+      const translatedValue = element.dataset[lang];
+      if (translatedValue) {
+        element.innerHTML = translatedValue;
+      }
+    });
+
+    languageButtons.forEach((button) => {
+      button.classList.toggle('active', button.dataset.lang === lang);
+    });
+
+    document.documentElement.lang = lang;
+    localStorage.setItem('preferredLanguage', lang);
+  }
+
+  languageButtons.forEach((button) => {
+    button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+  });
+
+  applyLanguage(localStorage.getItem('preferredLanguage') || 'en');
 </script>
 </body>
 </html>
